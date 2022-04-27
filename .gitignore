@@ -1,10 +1,6 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,django,pycharm,git,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django,pycharm,git,visualstudiocode
-### Custom ###
-!media/currencies
-!static/dashboard/dist/
-
 ### Django ###
 *.log
 *.pot
@@ -406,5 +402,9 @@ fabric.properties
 
 # Ignore code-workspaces
 *.code-workspace
+
+### Custom ###
+!media/slider
+!static/dashboard/dist
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,pycharm,git,visualstudiocode
