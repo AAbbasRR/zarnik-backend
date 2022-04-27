@@ -1,0 +1,52 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block titr %}{% block title %}بخش های سایت{% endblock title %}{% endblock titr %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'dashboard/plugins/datatables/dataTables.bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/dist/css/skins/_all-skins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/searchbar.css' %}">
+{% endblock style %}
+{% block main %}
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header bg-primary">
+                    <h3 class="box-title" style="color: #fefefe">اطلاعات بخش ها</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped text-center">
+                        <thead>
+                        <tr>
+                            <th>عنوان</th>
+                            <th>زیرعنوان</th>
+                            <th>توضیحات</th>
+                            <th>مکان قرارگیری</th>
+                            <th>ویرایش</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for section in section_data %}
+                            <tr>
+                                <td>{{ section.title }}</td>
+                                <td>{{ section.subtitle }}</td>
+                                <td>{{ section.content }}</td>
+                                <td>{{ section.location }}</td>
+                                <td>
+                                    <a href="{% url 'section:SectionUpdate' section.pk %}" class="btn btn-primary">ویرایش</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+{% endblock main %}
+{% block script %}
+    <!-- DataTables -->
+    <script src="{% static 'dashboard/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'dashboard/plugins/datatables/dataTables.bootstrap.min.js' %}"></script>
+{% endblock script %}

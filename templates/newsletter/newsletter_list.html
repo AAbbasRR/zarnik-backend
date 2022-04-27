@@ -1,0 +1,50 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block titr %}{% block title %}کاربران خبرنامه{% endblock title %}{% endblock titr %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'dashboard/plugins/datatables/dataTables.bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/dist/css/skins/_all-skins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'dashboard/css/searchbar.css' %}">
+{% endblock style %}
+{% block main %}
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header bg-primary">
+                    <h3 class="box-title" style="color: #fefefe">کاربران خبرنامه</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped text-center">
+                        <thead>
+                        <tr>
+                            <th>نام و نام خانوادگی</th>
+                            <th>ایمیل</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for newsletter in newsletter_data %}
+                            <tr>
+                                <td>
+                                    {% if newsletter.name is None %}
+                                        خالی
+                                    {% else %}
+                                        {{ newsletter.name }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ newsletter.email }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
+{% endblock main %}
+{% block script %}
+    <!-- DataTables -->
+    <script src="{% static 'dashboard/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'dashboard/plugins/datatables/dataTables.bootstrap.min.js' %}"></script>
+{% endblock script %}
